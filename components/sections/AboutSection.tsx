@@ -64,10 +64,12 @@ export default function AboutSection() {
         <div className="flex flex-col lg:flex-row items-start gap-8 sm:gap-12 lg:gap-16">
           {/* Content Section */}
           <div className="flex-1 order-2 lg:order-1">
-            <div 
+            <div
               ref={contentRef}
               className={`space-y-6 transition-all duration-800 ${
-                contentVisible ? "animate-fade-in-up" : "opacity-0 translate-y-8"
+                contentVisible
+                  ? "animate-fade-in-up"
+                  : "opacity-0 translate-y-8"
               }`}
             >
               <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
@@ -92,10 +94,7 @@ export default function AboutSection() {
                   Here are some of the technologies I&apos;ve been working with:
                 </p>
 
-                <div 
-                  ref={techRef}
-                  className="flex flex-wrap gap-4"
-                >
+                <div ref={techRef} className="flex flex-wrap gap-4">
                   {technologies.map((tech, index) => {
                     const IconComponent = tech.icon;
                     const isVisible = visibleItems.includes(index);
@@ -103,7 +102,9 @@ export default function AboutSection() {
                       <div
                         key={index}
                         className={`flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm border border-gray-700 px-3 py-2 rounded-lg hover:bg-gray-700/50 transition-all duration-300 ${
-                          isVisible ? "animate-fade-in-up" : "opacity-0 translate-y-4"
+                          isVisible
+                            ? "animate-fade-in-up"
+                            : "opacity-0 translate-y-4"
                         }`}
                         style={{ animationDelay: `${index * 100}ms` }}
                       >
@@ -121,10 +122,12 @@ export default function AboutSection() {
 
           {/* Image Section */}
           <div className="flex-shrink-0 order-1 lg:order-2">
-            <div 
+            <div
               ref={imageRef}
               className={`relative transition-all duration-800 ${
-                imageVisible ? "animate-slide-in-right" : "opacity-0 translate-x-8"
+                imageVisible
+                  ? "animate-slide-in-right"
+                  : "opacity-0 translate-x-8"
               }`}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-xl opacity-20"></div>
