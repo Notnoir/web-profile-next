@@ -76,20 +76,20 @@ export default function ClientProfile({ projects }: ClientProfileProps) {
 
   return (
     <>
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 pt-2 sm:pt-4">
-        <div className="max-w-4xl mx-auto px-2 sm:px-6 lg:px-8">
+      {/* Navigation - Neo Brutalism */}
+      <nav className="fixed top-0 left-0 right-0 z-50 pt-3 sm:pt-4">
+        <div className="max-w-5xl mx-auto px-2 sm:px-6 lg:px-8">
           {/* Desktop Navigation */}
-          <div className="hidden sm:flex justify-center items-center bg-black/60 backdrop-blur-lg rounded-full py-2 px-6">
+          <div className="hidden sm:flex justify-center items-center bg-[#FFEB3B] neo-border neo-shadow py-3 px-4 gap-2">
             {["profile", "about", "projects", "contact"].map((section) => (
               <a
                 key={section}
                 href={`#${section}`}
                 onClick={(e) => scrollToSection(e, section)}
-                className={`text-sm lg:text-lg font-semibold px-4 lg:px-7 py-2 mx-2 lg:mx-5 rounded-full transition-all duration-300 capitalize ${
+                className={`text-sm lg:text-base font-black uppercase px-5 lg:px-8 py-3 transition-all duration-200 neo-border ${
                   activeSection === section
-                    ? "bg-cyan-400 text-white scale-105"
-                    : "text-cyan-300 hover:text-white hover:bg-cyan-500 hover:scale-105"
+                    ? "bg-[#FF006E] text-white neo-shadow scale-105"
+                    : "bg-white text-black hover:bg-[#00F5FF] hover:scale-105"
                 }`}
               >
                 {section}
@@ -100,13 +100,13 @@ export default function ClientProfile({ projects }: ClientProfileProps) {
           {/* Mobile Navigation */}
           <div className="sm:hidden">
             {/* Mobile Menu Button */}
-            <div className="flex justify-between items-center bg-black/60 backdrop-blur-lg rounded-full py-3 px-6">
-              <span className="text-cyan-300 font-semibold text-lg capitalize">
+            <div className="flex justify-between items-center bg-[#FFEB3B] neo-border neo-shadow py-3 px-6">
+              <span className="text-black font-black text-lg uppercase">
                 {activeSection}
               </span>
               <button
                 onClick={toggleMobileMenu}
-                className="text-cyan-300 hover:text-white p-1 rounded-full transition-colors duration-300"
+                className="text-black hover:text-[#FF006E] p-1 transition-colors duration-300"
               >
                 <svg
                   className="w-6 h-6"
@@ -135,16 +135,16 @@ export default function ClientProfile({ projects }: ClientProfileProps) {
 
             {/* Mobile Menu Dropdown */}
             {isMobileMenuOpen && (
-              <div className="mt-2 bg-black/80 backdrop-blur-lg rounded-2xl py-2 px-4 animate-fadeInUp">
+              <div className="mt-3 bg-white neo-border neo-shadow py-2 px-2">
                 {["profile", "about", "projects", "contact"].map((section) => (
                   <a
                     key={section}
                     href={`#${section}`}
                     onClick={(e) => scrollToSection(e, section)}
-                    className={`block text-center font-semibold py-3 px-4 my-1 rounded-xl transition-all duration-300 capitalize ${
+                    className={`block text-center font-black py-3 px-4 my-2 uppercase transition-all duration-200 neo-border ${
                       activeSection === section
-                        ? "bg-cyan-400 text-white"
-                        : "text-cyan-300 hover:text-white hover:bg-cyan-500"
+                        ? "bg-[#FF006E] text-white"
+                        : "bg-[#FFEB3B] text-black hover:bg-[#00F5FF]"
                     }`}
                   >
                     {section}
@@ -156,14 +156,14 @@ export default function ClientProfile({ projects }: ClientProfileProps) {
         </div>
       </nav>
 
-      {/* Back to Top Button */}
+      {/* Back to Top Button - Neo Brutalism */}
       {showBackToTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 bg-cyan-500 text-white p-2 sm:p-3 rounded-full shadow-lg hover:bg-cyan-600 transition-all duration-300 hover:scale-110"
+          className="fixed bottom-6 right-6 z-50 bg-[#FFEB3B] text-black neo-border neo-shadow-hover p-4 font-black uppercase text-xs hover:bg-[#FF006E] hover:text-white transition-all duration-300 rotate-0 hover:-rotate-12"
         >
           <svg
-            className="w-5 h-5 sm:w-6 sm:h-6"
+            className="w-6 h-6"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -171,7 +171,7 @@ export default function ClientProfile({ projects }: ClientProfileProps) {
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth={2}
+              strokeWidth={3}
               d="M5 10l7-7m0 0l7 7m-7-7v18"
             />
           </svg>

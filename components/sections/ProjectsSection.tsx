@@ -24,83 +24,88 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   };
   return (
     <>
-      <section id="projects" className="bg-black py-12 sm:py-16 lg:py-20">
+      <section
+        id="projects"
+        className="bg-[#00F5FF] py-16 sm:py-20 lg:py-24 border-t-8 border-black"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Title */}
-          <div className="mb-12 sm:mb-16 lg:mb-20">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-8">
-              Projects
-            </h2>
+          {/* Section Title - Neo Brutalism Style */}
+          <div className="mb-12 sm:mb-16">
+            <div className="inline-block bg-[#FFEB3B] neo-border neo-shadow-lg px-8 py-4 -rotate-1 mb-8">
+              <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black text-black uppercase tracking-tight">
+                Projects
+              </h2>
+            </div>
+            <p className="text-black text-xl font-bold max-w-2xl font-mono">
+              Check out my latest work →
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
             {projects.map((project, index) => (
               <div
                 key={project.id}
                 onClick={() => handleCardClick(project)}
-                className={`relative group duration-500 cursor-pointer overflow-hidden text-gray-50 h-72 w-full rounded-2xl hover:duration-700 shadow-lg hover:shadow-2xl hover:shadow-cyan-500/10 border border-white/5 hover:border-cyan-400/30 transition-all hover:scale-105 ${
-                  index === 0
-                    ? "animate-[fadeInUp_1s_ease-out]"
-                    : index === 1
-                    ? "animate-[fadeInUp_1s_ease-out_0.2s_both]"
-                    : "animate-[fadeInUp_1s_ease-out_0.4s_both]"
+                className={`bg-white neo-border neo-shadow-hover cursor-pointer overflow-hidden transform transition-all hover:-rotate-1 ${
+                  index % 3 === 0
+                    ? "rotate-1"
+                    : index % 3 === 1
+                    ? "-rotate-1"
+                    : "rotate-0"
                 }`}
               >
-                {/* Background Image */}
-                <div className="w-full h-72 relative overflow-hidden rounded-2xl">
+                {/* Image Container */}
+                <div className="relative h-64 overflow-hidden border-b-4 border-black">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:brightness-110"
+                    className="object-cover transition-transform duration-300 hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80 group-hover:from-black/20 group-hover:to-black/90 transition-all duration-500"></div>
 
-                  {/* Overlay gradient for better text contrast */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                  {/* Top Icons */}
-                  <div className="absolute top-0 left-0 right-0 flex justify-between p-3">
-                    {/* Status Badge */}
-                    {project.status && (
-                      <div className="bg-yellow-400 text-black px-3 py-1 rounded-full font-bold text-xs">
-                        {project.status}
-                      </div>
-                    )}
-                  </div>
+                  {/* Status Badge */}
+                  {project.status && (
+                    <div className="absolute top-4 right-4 bg-[#FF006E] text-white px-4 py-2 font-black text-xs uppercase neo-border rotate-3">
+                      {project.status}
+                    </div>
+                  )}
                 </div>
 
-                {/* Content that slides up on hover */}
-                <div className="absolute bg-white/95 backdrop-blur-sm -bottom-24 w-full p-4 flex flex-col gap-2 group-hover:-bottom-0 group-hover:duration-600 duration-500 border-t border-white/20">
-                  <div className="flex flex-wrap gap-1 mb-2">
-                    {project.techStack.slice(0, 2).map((tech, techIndex) => (
+                {/* Content */}
+                <div className="p-6 bg-white">
+                  {/* Tech Stack Pills */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.techStack.slice(0, 3).map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="text-cyan-600 font-semibold text-xs uppercase tracking-wide"
+                        className={`px-3 py-1 text-xs font-black uppercase neo-border ${
+                          techIndex === 0
+                            ? "bg-[#00FF85]"
+                            : techIndex === 1
+                            ? "bg-[#FFEB3B]"
+                            : "bg-[#FF6B00] text-white"
+                        }`}
                       >
                         {tech}
-                        {techIndex <
-                          Math.min(project.techStack.length, 2) - 1 && " • "}
                       </span>
                     ))}
                   </div>
-                  <span className="text-gray-900 font-bold text-xl leading-tight">
+
+                  {/* Title */}
+                  <h3 className="text-2xl font-black text-black mb-3 leading-tight uppercase">
                     {project.title}
-                  </span>
-                  <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-black text-sm leading-relaxed line-clamp-3 font-medium">
                     {project.description}
                   </p>
 
-                  {/* All Tech Stack */}
-                  <div className="flex flex-wrap gap-1 mt-2">
-                    {project.techStack.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="bg-gray-100 text-gray-700 px-2 py-1 rounded-lg text-xs font-medium border border-gray-200"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  {/* View More Button */}
+                  <div className="mt-6">
+                    <div className="inline-block bg-black text-white px-6 py-3 font-black uppercase text-sm hover:bg-[#FF006E] transition-colors neo-border">
+                      View Details →
+                    </div>
                   </div>
                 </div>
               </div>

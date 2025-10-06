@@ -44,21 +44,23 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="min-h-screen bg-black relative py-12 sm:py-16 lg:py-20"
+      className="min-h-screen bg-[#00FF85] relative py-12 sm:py-16 lg:py-20 border-t-8 border-black"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
-        <div className="mb-12 sm:mb-16 lg:mb-20">
-          <h2
-            ref={titleRef}
-            className={`text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-8 transition-all duration-800 ${
-              titleVisible
-                ? "animate-slide-in-left"
-                : "opacity-0 -translate-x-8"
-            }`}
-          >
-            About Me
-          </h2>
+        <div className="mb-12 sm:mb-16">
+          <div className="inline-block bg-black text-[#FFEB3B] neo-border neo-shadow-lg px-8 py-4 rotate-1">
+            <h2
+              ref={titleRef}
+              className={`text-5xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight transition-all duration-800 ${
+                titleVisible
+                  ? "animate-slide-in-left"
+                  : "opacity-0 -translate-x-8"
+              }`}
+            >
+              About Me
+            </h2>
+          </div>
         </div>
 
         <div className="flex flex-col lg:flex-row items-start gap-8 sm:gap-12 lg:gap-16">
@@ -72,46 +74,60 @@ export default function AboutSection() {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-                I am an Informatics student at{" "}
-                <span className="text-cyan-400 font-semibold">
-                  Bandung National Institute of Technology
-                </span>
-                , focusing on software development and web technologies. As a
-                Frontend Engineer, I am passionate about creating attractive and
-                functional user interfaces. I have experience building web
-                applications using modern technologies and frameworks.
-                Currently, I am expanding my skillset to become a{" "}
-                <span className="text-green-400 font-semibold">
-                  Fullstack Developer
-                </span>
-                , learning backend development with various technologies and
-                databases.
-              </p>
-
-              <div className="pt-4">
-                <p className="text-gray-300 text-base sm:text-lg mb-6">
-                  Here are some of the technologies I&apos;ve been working with:
+              <div className="bg-white neo-border neo-shadow p-6 sm:p-8 -rotate-1">
+                <p className="text-black text-base sm:text-lg leading-relaxed font-medium">
+                  I am an Informatics student at{" "}
+                  <span className="bg-[#FF006E] text-white px-2 py-1 font-black">
+                    Bandung National Institute of Technology
+                  </span>
+                  , focusing on software development and web technologies. As a
+                  Frontend Engineer, I am passionate about creating attractive
+                  and functional user interfaces. I have experience building web
+                  applications using modern technologies and frameworks.
+                  Currently, I am expanding my skillset to become a{" "}
+                  <span className="bg-[#00F5FF] text-black px-2 py-1 font-black">
+                    Fullstack Developer
+                  </span>
+                  , learning backend development with various technologies and
+                  databases.
                 </p>
+              </div>
+
+              <div className="pt-6">
+                <div className="bg-black text-[#FFEB3B] neo-border px-6 py-3 inline-block mb-6 rotate-1">
+                  <p className="text-lg font-black uppercase">
+                    Technologies I Work With:
+                  </p>
+                </div>
 
                 <div ref={techRef} className="flex flex-wrap gap-4">
                   {technologies.map((tech, index) => {
                     const IconComponent = tech.icon;
                     const isVisible = visibleItems.includes(index);
+                    const colors = [
+                      "bg-[#FFEB3B]",
+                      "bg-blue-600 text-white",
+                      "bg-[#00F5FF]",
+                      "bg-gray-900",
+                      "bg-red-500 text-white",
+                      "bg-[#B026FF] text-white",
+                      "bg-black",
+                      "bg-white text-cyan-400",
+                    ];
                     return (
                       <div
                         key={index}
-                        className={`flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm border border-gray-700 px-3 py-2 rounded-lg hover:bg-gray-700/50 transition-all duration-300 ${
+                        className={`flex items-center gap-2 ${
+                          colors[index % colors.length]
+                        } neo-border px-4 py-3 neo-shadow-hover font-black text-sm uppercase ${
                           isVisible
                             ? "animate-fade-in-up"
                             : "opacity-0 translate-y-4"
                         }`}
                         style={{ animationDelay: `${index * 100}ms` }}
                       >
-                        <IconComponent className={`text-lg ${tech.color}`} />
-                        <span className={`text-sm font-medium ${tech.color}`}>
-                          {tech.name}
-                        </span>
+                        <IconComponent className="text-xl" />
+                        <span>{tech.name}</span>
                       </div>
                     );
                   })}
@@ -130,15 +146,19 @@ export default function AboutSection() {
                   : "opacity-0 translate-x-8"
               }`}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-xl opacity-20"></div>
-              <div className="relative rounded-2xl p-4 shadow-2xl">
+              <div className="relative neo-border-thick neo-shadow-lg bg-[#FF006E] p-2 rotate-2 hover:rotate-0 transition-transform">
                 <Image
                   src="/prof.jpg"
                   alt="Profile Photo"
                   width={320}
                   height={400}
-                  className="w-64 h-80 sm:w-72 sm:h-96 lg:w-80 lg:h-[400px] object-cover rounded-xl"
+                  className="w-64 h-80 sm:w-72 sm:h-96 lg:w-80 lg:h-[400px] object-cover neo-border"
                 />
+                <div className="absolute -bottom-6 -right-6 bg-[#FFEB3B] neo-border px-4 py-2 rotate-3">
+                  <p className="font-black text-black uppercase text-sm">
+                    Frontend Dev
+                  </p>
+                </div>
               </div>
             </div>
           </div>

@@ -1,5 +1,20 @@
 import type { Metadata } from "next";
+import { Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
+
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-space-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Riza Maulana Tamsirin",
@@ -55,14 +70,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${spaceGrotesk.variable} ${spaceMono.variable}`}
+    >
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#FFEB3B" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className="bg-black text-white antialiased">{children}</body>
+      <body className="bg-white text-black antialiased font-[var(--font-space-grotesk)]">
+        {children}
+      </body>
     </html>
   );
 }

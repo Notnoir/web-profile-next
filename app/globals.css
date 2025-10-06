@@ -1,21 +1,63 @@
 @import "tailwindcss";
 
-/* @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Dancing+Script:wght@400;500;600;700&display=swap"); */
+@theme {
+  --font-space-grotesk: "Space Grotesk", sans-serif;
+  --font-space-mono: "Space Mono", monospace;
+}
+
+/* Neo Brutalism Theme - Bold, Geometric, High Contrast */
+
+:root {
+  /* Neo Brutalism Color Palette */
+  --neo-yellow: #ffeb3b;
+  --neo-pink: #ff006e;
+  --neo-blue: #00f5ff;
+  --neo-green: #00ff85;
+  --neo-orange: #ff6b00;
+  --neo-purple: #b026ff;
+  --neo-black: #000000;
+  --neo-white: #ffffff;
+  --neo-gray: #1a1a1a;
+}
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: var(--font-space-grotesk), sans-serif;
+  background-color: var(--neo-white);
+  color: var(--neo-black);
 }
 
-.font-cursive {
-  font-family: "Dancing Script", cursive;
+.font-mono {
+  font-family: var(--font-space-mono), monospace;
 }
 
-.rounded-4xl {
-  border-radius: 2rem;
+/* Neo Brutalism Utility Classes */
+.neo-shadow {
+  box-shadow: 8px 8px 0px 0px #000000;
+}
+
+.neo-shadow-lg {
+  box-shadow: 12px 12px 0px 0px #000000;
+}
+
+.neo-shadow-hover {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.neo-shadow-hover:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 16px 16px 0px 0px #000000;
+}
+
+.neo-border {
+  border: 4px solid #000000;
+}
+
+.neo-border-thick {
+  border: 6px solid #000000;
 }
 
 /* Custom ping animation for loading dots */
