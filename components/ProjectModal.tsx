@@ -37,7 +37,7 @@ export default function ProjectModal({
         }`}
       >
         <div
-          className="bg-white neo-border-thick neo-shadow-lg max-w-3xl w-full max-h-[88vh] overflow-hidden transform transition-all duration-300 rotate-0 hover:-rotate-1"
+          className="bg-white neo-border-thick neo-shadow-lg max-w-3xl w-full max-h-[88vh] overflow-hidden transform transition-all duration-300 rotate-0"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
@@ -94,7 +94,7 @@ export default function ProjectModal({
                   const colors = [
                     "bg-[#FFEB3B]",
                     "bg-[#00FF85]",
-                    "bg-white",
+                    "bg-white text-black",
                     "bg-[#FF6B00] text-white",
                     "bg-[#B026FF] text-white",
                     "bg-black text-[#00FF85]",

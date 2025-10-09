@@ -57,9 +57,6 @@ export default function ProfileSection() {
               className={`text-black text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight mb-4 transition-all duration-800 uppercase ${
                 nameVisible ? "animate-fade-in-up" : "opacity-0 translate-y-8"
               }`}
-              style={{
-                textShadow: "4px 4px 0px #FF006E, 8px 8px 0px #00F5FF",
-              }}
             >
               I&apos;m Riza
               <br />

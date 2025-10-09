@@ -30,7 +30,7 @@ export default function LoadingScreen() {
     <div className="fixed inset-0 bg-[#FFEB3B] flex items-center justify-center z-50 p-4 overflow-hidden">
       {/* Geometric Background Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-[#FF006E] rotate-12 neo-border animate-pulse"></div>
+        <div className="absolute top-10 left-10 w-32 h-32 bg-[#FF006E] rotate-12 neo-border "></div>
         <div className="absolute top-20 right-20 w-24 h-24 bg-[#00F5FF] -rotate-6 neo-border animate-bounce"></div>
         <div className="absolute bottom-20 left-32 w-40 h-40 bg-[#00FF85] rotate-45 neo-border"></div>
         <div
@@ -43,10 +43,10 @@ export default function LoadingScreen() {
       {/* Main Loading Container */}
       <div className="relative z-10 w-full max-w-[700px]">
         {/* Title Box */}
-        <div className="bg-black text-[#00FF85] neo-border-thick neo-shadow-lg px-8 py-6 mb-6 -rotate-2 animate-pulse">
+        <div className="bg-black text-[#00FF85] neo-border-thick neo-shadow-lg px-8 py-6 mb-6 -rotate-2 ">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase text-center tracking-tight">
             {displayText}
-            <span className="animate-pulse">|</span>
+            <span className="">|</span>
           </h1>
         </div>
 
@@ -63,7 +63,7 @@ export default function LoadingScreen() {
                 className="h-full bg-gradient-to-r from-[#FF006E] via-[#00F5FF] to-[#00FF85] transition-all duration-300 neo-border-thick border-r-0"
                 style={{ width: `${progress}%` }}
               >
-                <div className="w-full h-full bg-black/10 animate-pulse"></div>
+                <div className="w-full h-full bg-black/10 "></div>
               </div>
             </div>
           </div>
