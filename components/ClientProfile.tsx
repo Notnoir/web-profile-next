@@ -62,12 +62,26 @@ export default function ClientProfile({ projects }: ClientProfileProps) {
   ) => {
     e.preventDefault();
     const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: "smooth" });
+
+    if (window.lenis) {
+      // Use Lenis smooth scroll
+      window.lenis.scrollTo(`#${sectionId}`, { offset: -100 });
+    } else {
+      // Fallback to native scroll
+      element?.scrollIntoView({ behavior: "smooth" });
+    }
+
     setIsMobileMenuOpen(false); // Close mobile menu after clicking
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (window.lenis) {
+      // Use Lenis smooth scroll
+      window.lenis.scrollTo(0);
+    } else {
+      // Fallback to native scroll
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   const toggleMobileMenu = () => {

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
+import LenisProvider from "@/components/LenisProvider";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -81,7 +82,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="bg-white text-black antialiased font-[var(--font-space-grotesk)]">
-        {children}
+        <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
   );
