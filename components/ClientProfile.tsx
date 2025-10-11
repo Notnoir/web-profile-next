@@ -80,7 +80,7 @@ export default function ClientProfile({ projects }: ClientProfileProps) {
       <nav className="fixed top-0 left-0 right-0 z-50 pt-3 sm:pt-4">
         <div className="max-w-5xl mx-auto px-2 sm:px-6 lg:px-8">
           {/* Desktop Navigation */}
-          <div className="hidden sm:flex justify-center items-center bg-[#FFEB3B] neo-border neo-shadow py-3 px-4 gap-2">
+          <div className="hidden sm:flex justify-center items-center bg-white neo-border neo-shadow py-3 px-4 gap-2">
             {["profile", "about", "projects", "contact"].map((section) => (
               <a
                 key={section}
@@ -88,8 +88,8 @@ export default function ClientProfile({ projects }: ClientProfileProps) {
                 onClick={(e) => scrollToSection(e, section)}
                 className={`text-sm lg:text-base font-black uppercase px-5 lg:px-8 py-3 transition-all duration-200 neo-border ${
                   activeSection === section
-                    ? "bg-[#FF006E] text-white neo-shadow scale-105"
-                    : "bg-white text-black hover:bg-[#00F5FF] hover:scale-105"
+                    ? "bg-[#38BDF8] text-white neo-shadow scale-105"
+                    : "bg-[#F1F5F9] text-[#0F172A] hover:bg-[#A78BFA] hover:text-white hover:scale-105"
                 }`}
               >
                 {section}
@@ -100,13 +100,13 @@ export default function ClientProfile({ projects }: ClientProfileProps) {
           {/* Mobile Navigation */}
           <div className="sm:hidden">
             {/* Mobile Menu Button */}
-            <div className="flex justify-between items-center bg-[#FFEB3B] neo-border neo-shadow py-3 px-6">
-              <span className="text-black font-black text-lg uppercase">
+            <div className="flex justify-between items-center bg-white neo-border neo-shadow py-3 px-6">
+              <span className="text-[#0F172A] font-black text-lg uppercase">
                 {activeSection}
               </span>
               <button
                 onClick={toggleMobileMenu}
-                className="text-black hover:text-[#FF006E] p-1 transition-colors duration-300"
+                className="text-[#0F172A] hover:text-[#38BDF8] p-1 transition-colors duration-300"
               >
                 <svg
                   className="w-6 h-6"
@@ -143,8 +143,8 @@ export default function ClientProfile({ projects }: ClientProfileProps) {
                     onClick={(e) => scrollToSection(e, section)}
                     className={`block text-center font-black py-3 px-4 my-2 uppercase transition-all duration-200 neo-border ${
                       activeSection === section
-                        ? "bg-[#FF006E] text-white"
-                        : "bg-[#FFEB3B] text-black hover:bg-[#00F5FF]"
+                        ? "bg-[#38BDF8] text-white"
+                        : "bg-[#F1F5F9] text-[#0F172A] hover:bg-[#A78BFA] hover:text-white"
                     }`}
                   >
                     {section}
@@ -160,7 +160,7 @@ export default function ClientProfile({ projects }: ClientProfileProps) {
       {showBackToTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 bg-[#FFEB3B] text-black neo-border neo-shadow-hover p-4 font-black uppercase text-xs hover:bg-[#FF006E] hover:text-white transition-all duration-300 rotate-0 hover:-rotate-12"
+          className="fixed bottom-6 right-6 z-50 bg-[#FCD34D] text-[#0F172A] neo-border neo-shadow-hover p-4 font-black uppercase text-xs hover:bg-[#38BDF8] hover:text-white transition-all duration-300 rotate-0 hover:-rotate-12"
         >
           <svg
             className="w-6 h-6"

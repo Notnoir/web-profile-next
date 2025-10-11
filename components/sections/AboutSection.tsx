@@ -44,12 +44,12 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="min-h-screen bg-[#00FF85] relative py-12 sm:py-16 lg:py-20 border-t-8 border-black"
+      className="min-h-screen bg-white relative py-12 sm:py-16 lg:py-20 border-t-4 border-[#F1F5F9]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <div className="mb-12 sm:mb-16">
-          <div className="inline-block bg-black text-[#FFEB3B] neo-border neo-shadow-lg px-8 py-4 rotate-1">
+          <div className="inline-block bg-[#0F172A] text-[#FCD34D] neo-border neo-shadow-lg px-8 py-4 rotate-1">
             <h2
               ref={titleRef}
               className={`text-5xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight transition-all duration-800 ${
@@ -74,10 +74,10 @@ export default function AboutSection() {
                   : "opacity-0 translate-y-8"
               }`}
             >
-              <div className="bg-white neo-border neo-shadow p-6 sm:p-8 -rotate-1">
-                <p className="text-black text-base sm:text-lg leading-relaxed font-medium">
+              <div className="bg-[#F1F5F9] neo-border neo-shadow p-6 sm:p-8 -rotate-1">
+                <p className="text-[#1E293B] text-base sm:text-lg leading-relaxed font-medium">
                   I am an Informatics student at{" "}
-                  <span className="bg-[#FF006E] text-white px-2 py-1 font-black">
+                  <span className="bg-[#A78BFA] text-white px-2 py-1 font-black">
                     Bandung National Institute of Technology
                   </span>
                   , focusing on software development and web technologies. As a
@@ -85,7 +85,7 @@ export default function AboutSection() {
                   and functional user interfaces. I have experience building web
                   applications using modern technologies and frameworks.
                   Currently, I am expanding my skillset to become a{" "}
-                  <span className="bg-[#00F5FF] text-black px-2 py-1 font-black">
+                  <span className="bg-[#38BDF8] text-[#0F172A] px-2 py-1 font-black">
                     Fullstack Developer
                   </span>
                   , learning backend development with various technologies and
@@ -94,7 +94,7 @@ export default function AboutSection() {
               </div>
 
               <div className="pt-6">
-                <div className="bg-black text-[#FFEB3B] neo-border px-6 py-3 inline-block mb-6 rotate-1">
+                <div className="bg-[#0F172A] text-[#FCD34D] neo-border px-6 py-3 inline-block mb-6 rotate-1">
                   <p className="text-lg font-black uppercase">
                     Technologies I Work With:
                   </p>
@@ -105,7 +105,7 @@ export default function AboutSection() {
                     const IconComponent = tech.icon;
                     const isVisible = visibleItems.includes(index);
                     const colors = [
-                      "bg-[#FFEB3B]",
+                      "bg-[#0F172A] text-[#FFEB3B]",
                       "bg-blue-600 text-white",
                       "bg-[#00F5FF]",
                       "bg-gray-900",
@@ -146,7 +146,7 @@ export default function AboutSection() {
                   : "opacity-0 translate-x-8"
               }`}
             >
-              <div className="relative neo-border-thick neo-shadow-lg bg-[#FF006E] p-2 rotate-2 hover:rotate-0 transition-transform">
+              <div className="relative neo-border-thick neo-shadow-lg bg-[#A78BFA] p-2 rotate-2 hover:rotate-0 transition-transform">
                 <Image
                   src="/prof.jpg"
                   alt="Profile Photo"
@@ -154,10 +154,8 @@ export default function AboutSection() {
                   height={400}
                   className="w-64 h-80 sm:w-72 sm:h-96 lg:w-80 lg:h-[400px] object-cover neo-border"
                 />
-                <div className="absolute -bottom-6 -right-6 bg-[#FFEB3B] neo-border px-4 py-2 rotate-3">
-                  <p className="font-black text-black uppercase text-sm">
-                    Frontend Dev
-                  </p>
+                <div className="absolute -bottom-6 -right-6 bg-[#FCD34D] text-[#0F172A] neo-border px-4 py-2 rotate-3">
+                  <p className="font-black uppercase text-sm">Frontend Dev</p>
                 </div>
               </div>
             </div>
