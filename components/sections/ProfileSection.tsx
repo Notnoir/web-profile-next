@@ -25,8 +25,8 @@ export default function ProfileSection() {
       id="profile"
       className="min-h-screen bg-white relative overflow-hidden py-12 sm:py-16 lg:py-20"
     >
-      {/* Neo Brutalism Icons Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Neo Brutalism Icons Background - Hidden on Mobile */}
+      <div className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none">
         {/* CreditCard Icon - Top Left */}
         <div className="absolute top-20 left-10 w-32 h-32 rotate-12">
           <Image
