@@ -50,12 +50,23 @@ export default function ProfileSection() {
         </div>
 
         {/* Message Icon - Bottom Left */}
-        <div className="absolute bottom-40 left-32 w-40 h-40 rotate-45">
+        <div className="absolute bottom-64 left-32 w-40 h-40 -rotate-12">
           <Image
             src="/icons/Message.png"
             alt="Message"
             width={160}
             height={160}
+            className="w-full h-full object-contain"
+          />
+        </div>
+
+        {/* Pause Icon - Bottom Right */}
+        <div className="absolute top-1/2 right-30 w-28 h-28 -rotate-12">
+          <Image
+            src="/icons/Pause.png"
+            alt="Pause"
+            width={112}
+            height={112}
             className="w-full h-full object-contain"
           />
         </div>
