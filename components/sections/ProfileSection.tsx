@@ -4,15 +4,9 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { useRevealOnScroll } from "@/hooks/useAnimations";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
 
 export default function ProfileSection() {
   const iconRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const sectionRef = useRef<HTMLElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
 
   const { ref: greetingRef, isVisible: greetingVisible } = useRevealOnScroll(
     0.1,
@@ -55,63 +49,11 @@ export default function ProfileSection() {
           delay: 0.3,
         }
       );
-
-      // GSAP ScrollTrigger: Parallax effect untuk ikon-ikon
-      icons.forEach((icon, index) => {
-        const speed = [0.3, 0.5, 0.4, 0.6, 0.35][index]; // Kecepatan berbeda untuk tiap ikon
-        
-        gsap.to(icon, {
-          y: () => -100 * speed,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: 1,
-          },
-        });
-
-        // Rotasi tambahan saat scroll
-        gsap.to(icon, {
-          rotation: (index) => {
-            const baseRotations = [12, -6, -12, -12, -12];
-            return baseRotations[index] + (index % 2 === 0 ? 15 : -15);
-          },
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: 2,
-          },
-        });
-      });
     }
-
-    // GSAP ScrollTrigger: Fade out content saat scroll
-    if (contentRef.current) {
-      gsap.to(contentRef.current, {
-        opacity: 0,
-        y: -50,
-        ease: "power2.in",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-        },
-      });
-    }
-
-    // Cleanup
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
   }, []);
 
   return (
     <section
-      ref={sectionRef}
       id="profile"
       className="min-h-screen bg-white relative overflow-hidden py-12 sm:py-16 lg:py-20"
     >
@@ -198,10 +140,7 @@ export default function ProfileSection() {
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full relative z-10">
-        <div 
-          ref={contentRef}
-          className="flex flex-col justify-center items-center min-h-screen py-12 sm:py-16 lg:py-20 gap-8 sm:gap-10 lg:gap-12"
-        >
+        <div className="flex flex-col justify-center items-center min-h-screen py-12 sm:py-16 lg:py-20 gap-8 sm:gap-10 lg:gap-12">
           <div className="text-center px-2 sm:px-4">
             {/* Greeting with Neo Brutalism Badge */}
             <div className="inline-block mb-6">
