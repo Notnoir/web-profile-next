@@ -1,10 +1,19 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { useRevealOnScroll } from "@/hooks/useAnimations";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ProfileSection() {
+  const iconRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
   const { ref: greetingRef, isVisible: greetingVisible } = useRevealOnScroll(
     0.1,
     0
@@ -20,15 +29,101 @@ export default function ProfileSection() {
     800
   );
 
+  useEffect(() => {
+    // Animasi ikon-ikon background saat pertama kali load
+    const icons = iconRefs.current.filter(Boolean);
+
+    if (icons.length > 0) {
+      gsap.fromTo(
+        icons,
+        {
+          y: -200,
+          opacity: 0,
+          rotation: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          rotation: (index) => {
+            // Kembalikan rotasi sesuai dengan class masing-masing
+            const rotations = [12, -6, -12, -12, -12];
+            return rotations[index] || 0;
+          },
+          duration: 1.2,
+          ease: "power3.out",
+          stagger: 0.15,
+          delay: 0.3,
+        }
+      );
+
+      // GSAP ScrollTrigger: Parallax effect untuk ikon-ikon
+      icons.forEach((icon, index) => {
+        const speed = [0.3, 0.5, 0.4, 0.6, 0.35][index]; // Kecepatan berbeda untuk tiap ikon
+        
+        gsap.to(icon, {
+          y: () => -100 * speed,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1,
+          },
+        });
+
+        // Rotasi tambahan saat scroll
+        gsap.to(icon, {
+          rotation: (index) => {
+            const baseRotations = [12, -6, -12, -12, -12];
+            return baseRotations[index] + (index % 2 === 0 ? 15 : -15);
+          },
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 2,
+          },
+        });
+      });
+    }
+
+    // GSAP ScrollTrigger: Fade out content saat scroll
+    if (contentRef.current) {
+      gsap.to(contentRef.current, {
+        opacity: 0,
+        y: -50,
+        ease: "power2.in",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+    }
+
+    // Cleanup
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="profile"
       className="min-h-screen bg-white relative overflow-hidden py-12 sm:py-16 lg:py-20"
     >
       {/* Neo Brutalism Icons Background - Hidden on Mobile */}
       <div className="hidden sm:block absolute inset-0 overflow-hidden pointer-events-none">
         {/* CreditCard Icon - Top Left */}
-        <div className="absolute top-20 left-10 w-32 h-32 rotate-12">
+        <div
+          ref={(el) => {
+            iconRefs.current[0] = el;
+          }}
+          className="absolute top-20 left-10 w-32 h-32 rotate-12"
+        >
           <Image
             src="/icons/CreditCard.png"
             alt="Credit Card"
@@ -39,7 +134,12 @@ export default function ProfileSection() {
         </div>
 
         {/* Folder Icon - Top Right */}
-        <div className="absolute top-40 right-20 w-24 h-24 -rotate-6">
+        <div
+          ref={(el) => {
+            iconRefs.current[1] = el;
+          }}
+          className="absolute top-40 right-20 w-24 h-24 -rotate-6"
+        >
           <Image
             src="/icons/Video.png"
             alt="Folder"
@@ -50,7 +150,12 @@ export default function ProfileSection() {
         </div>
 
         {/* Message Icon - Bottom Left */}
-        <div className="absolute bottom-64 left-32 w-40 h-40 -rotate-12">
+        <div
+          ref={(el) => {
+            iconRefs.current[2] = el;
+          }}
+          className="absolute bottom-64 left-32 w-40 h-40 -rotate-12"
+        >
           <Image
             src="/icons/Message.png"
             alt="Message"
@@ -61,7 +166,12 @@ export default function ProfileSection() {
         </div>
 
         {/* Pause Icon - Bottom Right */}
-        <div className="absolute top-1/2 right-30 w-28 h-28 -rotate-12">
+        <div
+          ref={(el) => {
+            iconRefs.current[3] = el;
+          }}
+          className="absolute top-1/2 right-30 w-28 h-28 -rotate-12"
+        >
           <Image
             src="/icons/Pause.png"
             alt="Pause"
@@ -72,7 +182,12 @@ export default function ProfileSection() {
         </div>
 
         {/* Photo Icon - Bottom Right */}
-        <div className="absolute bottom-20 right-40 w-28 h-28 -rotate-12">
+        <div
+          ref={(el) => {
+            iconRefs.current[4] = el;
+          }}
+          className="absolute bottom-20 right-40 w-28 h-28 -rotate-12"
+        >
           <Image
             src="/icons/Photo.png"
             alt="Photo"
@@ -83,7 +198,10 @@ export default function ProfileSection() {
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full relative z-10">
-        <div className="flex flex-col justify-center items-center min-h-screen py-12 sm:py-16 lg:py-20 gap-8 sm:gap-10 lg:gap-12">
+        <div 
+          ref={contentRef}
+          className="flex flex-col justify-center items-center min-h-screen py-12 sm:py-16 lg:py-20 gap-8 sm:gap-10 lg:gap-12"
+        >
           <div className="text-center px-2 sm:px-4">
             {/* Greeting with Neo Brutalism Badge */}
             <div className="inline-block mb-6">

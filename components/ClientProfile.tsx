@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { Project } from "@/types/project";
-import LoadingScreen from "./LoadingScreen";
-import { useLoading } from "@/hooks/useLoading";
 
 interface ClientProfileProps {
   projects: Project[];
@@ -13,7 +11,6 @@ export default function ClientProfile({ projects }: ClientProfileProps) {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [activeSection, setActiveSection] = useState("profile");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const isLoading = useLoading(3000); // 3 seconds loading time
 
   // Remove the unused projects parameter since it's only needed for props type checking
   // The projects data is managed by the parent component
@@ -50,11 +47,6 @@ export default function ClientProfile({ projects }: ClientProfileProps) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Show loading screen
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
 
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement>,
