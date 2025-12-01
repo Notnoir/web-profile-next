@@ -22,7 +22,6 @@ export default function AboutSection() {
   ];
 
   const skills = [
-    "Yapping",
     "JavaScript",
     "TypeScript",
     "React",
