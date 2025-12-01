@@ -74,14 +74,32 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${spaceGrotesk.variable} ${spaceMono.variable}`}
+      suppressHydrationWarning
     >
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#FFEB3B" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const theme = localStorage.getItem('theme');
+                if (theme === 'dark') {
+                  document.documentElement.classList.add('dark');
+                } else {
+                  document.documentElement.classList.remove('dark');
+                  localStorage.setItem('theme', 'light');
+                }
+              } catch (e) {
+                document.documentElement.classList.remove('dark');
+              }
+            `,
+          }}
+        />
       </head>
-      <body className="bg-white text-black antialiased font-[var(--font-space-grotesk)]">
+      <body className="bg-white dark:bg-black text-black dark:text-zinc-100 antialiased font-[var(--font-space-grotesk)]">
         <LenisProvider>{children}</LenisProvider>
       </body>
     </html>
