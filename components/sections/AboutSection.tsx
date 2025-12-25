@@ -32,7 +32,7 @@ export default function AboutSection() {
     {
       school: "Bandung National Institute of Technology",
       degree: "Bachelor of Science in Informatics",
-      date: "2023 - Now",
+      date: "2023 - Present",
       logo: "/icons/itenas.jpg",
     },
   ];
