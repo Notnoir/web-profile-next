@@ -25,7 +25,7 @@ export default function ProfileSection() {
 
             <div className="relative w-24 h-24 md:w-28 md:h-28 shrink-0">
               <Image
-                src="/prof2.jpeg"
+                src="/prof3.jpg"
                 alt="Riza Maulana"
                 fill
                 className="rounded-full object-cover"

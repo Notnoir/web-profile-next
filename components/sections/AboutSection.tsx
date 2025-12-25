@@ -10,7 +10,23 @@ export default function AboutSection() {
     role: string;
     date: string;
     logo: string;
-  }[] = [];
+    description: string;
+  }[] = [
+    {
+      company: "SINC Laboratory, Bandung National Institute of Technology",
+      role: "Programming Laboratory Assistant – Basic Programming",
+      date: "Sep 2025 – Present",
+      logo: "/icons/sinc.jpeg",
+      description: "Assisted students in understanding fundamental programming concepts such as variables, control flow, functions, and basic algorithms. Guided hands-on coding sessions, reviewed student assignments, and helped debug programming errors during lab sessions. Also collaborated with the lab team to prepare teaching materials and practical modules."
+    },
+    {
+      company: "ICT Laboratory, Bandung National Institute of Technology",
+      role: "ICT Laboratory Member (Information & Communication Technology Laboratory)",
+      date: "Jun 2025 – Present",
+      logo: "/icons/ict.png",
+      description: "As a member of the ICT Laboratory, I'm involved in exploring and developing technology-based projects, especially related to software development and emerging technologies. I collaborate with other lab members on technical discussions, experiments, and small-scale projects, while continuously improving my skills in programming, system design, and teamwork within an academic-technical environment."
+    }
+  ];
 
   const education = [
     {
@@ -63,24 +79,36 @@ export default function AboutSection() {
             {experiences.length > 0 ? (
               <div className="space-y-5">
                 {experiences.map((exp, index) => (
-                  <div key={index} className="flex items-start justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-zinc-800 flex items-center justify-center shrink-0">
-                        {/* Placeholder for logo */}
-                        <div className="w-5 h-5 bg-slate-400 dark:bg-zinc-600 rounded-full"></div>
+                  <div key={index} className="space-y-2">
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full dark:bg-zinc-800 flex items-center justify-center shrink-0">
+                          <Image
+                            src={exp.logo}
+                            alt={exp.company}
+                            width={40}
+                            height={40}
+                            className="rounded-full object-cover"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-slate-900 dark:text-zinc-100 text-md leading-tight">
+                            {exp.company}
+                          </h3>
+                          <p className="text-slate-500 dark:text-zinc-400 text-xs mt-0.5">
+                            {exp.role}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="font-semibold text-slate-900 dark:text-zinc-100 text-md leading-tight">
-                          {exp.company}
-                        </h3>
-                        <p className="text-slate-500 dark:text-zinc-400 text-xs mt-0.5">
-                          {exp.role}
-                        </p>
-                      </div>
+                      <span className="text-xs text-slate-400 dark:text-zinc-500 whitespace-nowrap ml-4">
+                        {exp.date}
+                      </span>
                     </div>
-                    <span className="text-xs text-slate-400 dark:text-zinc-500 whitespace-nowrap ml-4">
-                      {exp.date}
-                    </span>
+                    {exp.description && (
+                      <p className="text-slate-600 dark:text-zinc-400 text-sm leading-relaxed ml-[52px]">
+                        {exp.description}
+                      </p>
+                    )}
                   </div>
                 ))}
               </div>
