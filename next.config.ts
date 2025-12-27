@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["media.giphy.com"],
+    domains: ["media.giphy.com", "picsum.photos"],
     // Alternative: use remotePatterns for more control
     // remotePatterns: [
     //   {

@@ -3,6 +3,7 @@ import ClientProfile from "@/components/ClientProfile";
 import {
   ProfileSection,
   AboutSection,
+  ActivitiesSection,
   ProjectsSection,
   ContactSection,
   Footer,
@@ -98,6 +99,7 @@ export default function ProfilePage() {
       <ProfileSection />
       <AboutSection />
       <ProjectsSection projects={projects} />
+      <ActivitiesSection />
       <ContactSection />
       <Footer />
     </div>
